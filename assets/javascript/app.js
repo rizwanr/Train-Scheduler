@@ -56,7 +56,7 @@ $('#add-train-btn').on('click', function(event) {
 
   // Next Train
   var nextTrain = moment().add(tMinutesTillTrain, 'minutes');
-  console.log('ARRIVAL TIME: ' + moment(nextTrain).format('hh:mm'));
+  var nextTraininHoursAndMinutes = moment(nextTrain).format('LT');
 
   // Code for handling the push
   database.ref().push({
@@ -64,7 +64,7 @@ $('#add-train-btn').on('click', function(event) {
     destination: destination,
     firstTrainTime: firstTrainTime,
     tfrequency: tfrequency,
-    nextTrain: nextTrain.toString(),
+    nextTrain: nextTraininHoursAndMinutes.toString(),
     tMinutesTillTrain: tMinutesTillTrain.toString()
   });
 });
